@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelBeast — Captura. Combate. Conquista.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ░░░ CANVAS DE FONDO ░░░ -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- ░░░ SCANLINES OVERLAY ░░░ -->
+  <div class="scanlines"></div>
+
+  <!-- ░░░ HEADER / NAV ░░░ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-pixel">⚔️ PIXEL<span>BEAST</span></div>
+      <nav class="nav-links">
+        <a href="#beasts">Monstruos</a>
+        <a href="#mechanics">Mecánicas</a>
+        <a href="#download">Descargar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ░░░ HERO ░░░ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🎮 RPG PIXEL ART · PYTHON</div>
+      <h1 class="hero-title">
+        <span class="title-pixel">PIXEL</span>
+        <span class="title-beast">BEAST</span>
+      </h1>
+      <p class="hero-tagline">Explora. Combate. Captura.</p>
+      <p class="hero-sub">
+        Un RPG de exploración y captura de monstruos por turnos.<br />
+        El dado decide tu destino.
+      </p>
+
+      <a href="https://github.com/0swq/PixelBeast/releases/download/betaV1/main.exe" class="btn-download-hero" download>
+        <span class="btn-icon">▼</span>
+        DESCARGAR GRATIS
+        <span class="btn-icon">▼</span>
+      </a>
+
+      <div class="hero-stats">
+        <div class="stat-pill">🐉 5 Monstruos</div>
+        <div class="stat-pill">⚔️ 3 Personajes</div>
+        <div class="stat-pill">🎲 Combate por Dados</div>
+        <div class="stat-pill">🗺️ Mapa Explorable</div>
+      </div>
+    </div>
+
+    <!-- Monstruos flotando en el hero -->
+    <div class="hero-beasts">
+      <div class="beast-float" style="--delay:0s; --x:10%; --y:30%">
+        <img src="icons/atrox_mapa.png" alt="atrox_mapa">
+      </div>
+      <div class="beast-float" style="--delay:0.8s; --x:85%; --y:20%">
+        <img src="icons/charmadillo_mapa.png" alt="charmadillo_mapa">
+      </div>
+      <div class="beast-float" style="--delay:1.6s; --x:75%; --y:65%">
+        <img src="icons/cleaf_mapa.png" alt="cleaf_mapa">
+      </div>
+      <div class="beast-float" style="--delay:2.4s; --x:15%; --y:70%">
+        <img src="icons/finiette_mapa.png" alt="finiette_mapa">
+      </div>
+      <div class="beast-float" style="--delay:3.2s; --x:50%; --y:80%">
+        <img src="icons/pouch_mapa.png" alt="pouch_mapa">
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ SECCIÓN MONSTRUOS ░░░ -->
+  <section class="beasts-section" id="beasts">
+    <div class="section-title-wrap">
+      <h2 class="section-title">⚔ LOS MONSTRUOS ⚔</h2>
+      <p class="section-sub">5 bestias únicas. Cada una con su propio elemento y poder.</p>
+    </div>
+
+    <div class="beasts-grid">
+
+      <div class="beast-card" data-element="lightning">
+        <div class="beast-element-badge">RAYO</div>
+        <div class="beast-emoji">
+            <img src="icons/atrox.png" alt="atrox">
+        </div>
+        <h3 class="beast-name">ATROX</h3>
+        <div class="beast-bars">
+          <div class="bar-row">
+            <span>HP</span>
+            <div class="bar"><div class="bar-fill" style="--w:73%"></div></div>
+            <span>220</span>
+          </div>
+          <div class="bar-row">
+            <span>ATK</span>
+            <div class="bar"><div class="bar-fill atk" style="--w:66%"></div></div>
+            <span>22</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="beast-card" data-element="fire">
+        <div class="beast-element-badge">FUEGO</div>
+        <div class="beast-emoji">
+            <img src="icons/charmadillo.png" alt="charmadillo">
+        </div>
+        <h3 class="beast-name">CHARMADILLO</h3>
+        <div class="beast-bars">
+          <div class="bar-row">
+            <span>HP</span>
+            <div class="bar"><div class="bar-fill" style="--w:70%"></div></div>
+            <span>210</span>
+          </div>
+          <div class="bar-row">
+            <span>ATK</span>
+            <div class="bar"><div class="bar-fill atk" style="--w:75%"></div></div>
+            <span>25</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="beast-card" data-element="earth">
+        <div class="beast-element-badge">TIERRA</div>
+        <div class="beast-emoji">
+            <img src="icons/pouch.png" alt="pouch">
+        </div>
+        <h3 class="beast-name">POUCH</h3>
+        <div class="beast-bars">
+          <div class="bar-row">
+            <span>HP</span>
+            <div class="bar"><div class="bar-fill" style="--w:83%"></div></div>
+            <span>250</span>
+          </div>
+          <div class="bar-row">
+            <span>ATK</span>
+            <div class="bar"><div class="bar-fill atk" style="--w:60%"></div></div>
+            <span>20</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="beast-card" data-element="water">
+        <div class="beast-element-badge">AGUA</div>
+        <div class="beast-emoji">
+            <img src="icons/finiette.png" alt="finiette">
+        </div>
+        <h3 class="beast-name">FINIETTE</h3>
+        <div class="beast-bars">
+          <div class="bar-row">
+            <span>HP</span>
+            <div class="bar"><div class="bar-fill" style="--w:73%"></div></div>
+            <span>220</span>
+          </div>
+          <div class="bar-row">
+            <span>ATK</span>
+            <div class="bar"><div class="bar-fill atk" style="--w:66%"></div></div>
+            <span>22</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="beast-card" data-element="plant">
+        <div class="beast-element-badge">PLANTA</div>
+        <div class="beast-emoji">
+            <img src="icons/cleaf.png" alt="cleaf">
+        </div>
+        <h3 class="beast-name">CLEAF</h3>
+        <div class="beast-bars">
+          <div class="bar-row">
+            <span>HP</span>
+            <div class="bar"><div class="bar-fill" style="--w:77%"></div></div>
+            <span>230</span>
+          </div>
+          <div class="bar-row">
+            <span>ATK</span>
+            <div class="bar"><div class="bar-fill atk" style="--w:69%"></div></div>
+            <span>23</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ░░░ SECCIÓN MECÁNICAS ░░░ -->
+  <section class="mechanics-section" id="mechanics">
+    <div class="section-title-wrap">
+      <h2 class="section-title">🎲 MECÁNICAS</h2>
+      <p class="section-sub">Cada turno cuenta. Cada tirada cambia el juego.</p>
+    </div>
+
+    <div class="mechanics-grid">
+
+      <div class="mechanic-card">
+        <div class="mechanic-icon">
+            <img src="icons/dado_icon.png" alt="dado_icon">
+        </div>
+        <h3>Dado Animado</h3>
+        <p>Cada ataque lanza un dado que determina el modificador de daño. ¿Suerte o habilidad? Las dos.</p>
+        <div class="dice-demo">
+          <div class="dice" id="diceDemo">1</div>
+          <button class="btn-roll" onclick="rollDice()">Tirar</button>
+        </div>
+      </div>
+
+      <div class="mechanic-card">
+        <div class="mechanic-icon">
+            <img src="icons/sistema_icon.png" alt="sistema_icon">
+        </div>
+        <h3>Sistema Elemental</h3>
+        <p>5 elementos con ventajas y desventajas. x1.5 de daño en ventaja, x0.5 en desventaja. La estrategia importa.</p>
+        <div class="element-wheel">
+          <span title="Rayo">
+            <img src="icons/trueno_icon.png" alt="trueno_icon">
+          </span>
+          <span title="Fuego">
+            <img src="icons/fuego_icon.png" alt="fuego_icon">
+          </span>
+          <span title="Agua">
+            <img src="icons/agua_icon.png" alt="agua_icon">
+          </span>
+          <span title="Planta">
+            <img src="icons/planta_icon.png" alt="planta_icon">
+          </span>
+          <span title="Tierra">
+            <img src="icons/tierra_icon.png" alt="tierra_icon">
+          </span>
+        </div>
+      </div>
+
+      <div class="mechanic-card">
+        <div class="mechanic-icon">
+            <img src="icons/inventario_icon.png" alt="inventario_icon">
+        </div>
+        <h3>Inventario de Batalla</h3>
+        <p>2 pociones de vida (+60 HP) y 2 potenciadores de ataque (+8 ATK) por combate. Úsalos bien.</p>
+        <div class="items-demo">
+          <div class="item-pill">🧪 ×2</div>
+          <div class="item-pill">⚔️ ×2</div>
+        </div>
+      </div>
+
+      <div class="mechanic-card">
+        <div class="mechanic-icon">
+            <img src="icons/campamento_icon.png" alt="campamento_icon">
+        </div>
+        <h3>Campamento de la Fortuna</h3>
+        <p>Presiona C en el mapa para tirar el dado especial. Saca 5 o 6 y obtienes +6 ATK para tu próxima batalla.</p>
+        <div class="camp-demo">
+          <span class="camp-key">C</span>
+          <span>→ 🎲 5/6 → +6 ATK</span>
+        </div>
+      </div>
+
+      <div class="mechanic-card">
+        <div class="mechanic-icon">
+            <img src="icons/mapa_icon.png" alt="mapa_icon">
+        </div>
+        <h3>Exploración en Mapa</h3>
+        <p>Mapa 2D de pixel art hecho en Tiled. Haz zoom con la rueda del mouse. Encuentra monstruos y entabla batallas.</p>
+      </div>
+
+      <div class="mechanic-card">
+        <div class="mechanic-icon">
+            <img src="icons/historia_icon.png" alt="historia_icon">
+        </div>
+        <h3>Historia en Cómic</h3>
+        <p>El juego arranca con una introducción narrativa en formato cómic para una experiencia más inmersiva.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ░░░ PERSONAJES ░░░ -->
+  <section class="characters-section">
+    <div class="section-title-wrap">
+      <h2 class="section-title">🧙 ELIGE TU PERSONAJE</h2>
+    </div>
+    <div class="characters-grid">
+      <div class="char-card">
+        <div class="char-emoji">
+            <img src="icons/guerrero_idle.png" alt="guerrero_idle">
+        </div>
+        <h3>GUERRERO</h3>
+        <p>Fuerza bruta. Alto ataque base.</p>
+      </div>
+      <div class="char-card featured">
+        <div class="char-badge">POPULAR</div>
+        <div class="char-emoji">
+            <img src="icons/maga_idle.png" alt="maga_idle">
+        </div>
+        <h3>MAGA</h3>
+        <p>Poder arcano. Ventajas elementales.</p>
+      </div>
+      <div class="char-card">
+        <div class="char-emoji">
+            <img src="icons/explorador_idle.png" alt="explorador_idle">
+        </div>
+        <h3>EXPLORADOR</h3>
+        <p>Movilidad y suerte en el mapa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ DOWNLOAD CTA ░░░ -->
+  <section class="download-section" id="download">
+    <div class="download-inner">
+      <div class="download-decoration">
+        <div class="pixel-corner top-left"></div>
+        <div class="pixel-corner top-right"></div>
+        <div class="pixel-corner bot-left"></div>
+        <div class="pixel-corner bot-right"></div>
+      </div>
+
+      <p class="download-label">▶ VERSIÓN 1.0 · GRATIS · WINDOWS</p>
+      <h2 class="download-title">¿LISTO PARA<br/>CAPTURARLOS?</h2>
+      <p class="download-sub">Python 3.13 · Pygame · Arte Pixel Art · 60 FPS</p>
+
+      <a href="https://github.com/0swq/PixelBeast/releases/download/betaV1/main.exe" class="btn-download-main" id="downloadBtn" download>
+        <span class="btn-glow"></span>
+        <span class="btn-text">
+          <span class="btn-arrow">▼</span>
+          DESCARGAR PIXELBEAST
+          <span class="btn-arrow">▼</span>
+        </span>
+      </a>
+
+      <div class="download-meta">
+        <span>🖥️ Windows</span>
+        <span>·</span>
+        <span>🐍 Requiere Python 3.13</span>
+        <span>·</span>
+        <span>📦 Incluye dependencias</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ FOOTER ░░░ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-logo">⚔️ PIXELBEAST</p>
+      <p class="footer-copy">Hecho con 🐍 Python + Pygame · Pixel Art RPG</p>
+      <p class="footer-tiny">© 2025 PixelBeast. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
